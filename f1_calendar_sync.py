@@ -401,9 +401,7 @@ def sync_f1_schedule():
 
     added_count = 0
     updated_count = 0
-    past_count = 0
     invalid_date_count = 0
-    current_time = datetime.now(timezone.utc)
 
     # Session types to sync
     session_types = ["race", "qualy", "sprintRace", "sprintQualy"]
@@ -426,10 +424,6 @@ def sync_f1_schedule():
             match_datetime = parse_f1_datetime(session_date, session_time)
             if not match_datetime:
                 invalid_date_count += 1
-                continue
-
-            if match_datetime < current_time:
-                past_count += 1
                 continue
 
             title = format_session_title(race, session_type)
@@ -460,18 +454,10 @@ def sync_f1_schedule():
     logger.info(f"  - Total races fetched: {len(races)}")
     logger.info(f"  - Events added: {added_count}")
     logger.info(f"  - Events updated/replaced: {updated_count}")
-    logger.info(f"  - Past sessions skipped: {past_count}")
     logger.info(f"  - Invalid date skipped: {invalid_date_count}")
     logger.info("=" * 60)
 
-    if added_count == 0 and updated_count == 0 and past_count > 0:
-        logger.warning(
-            "⚠ No events added or updated because all sessions are in the past!"
-        )
-        logger.info(
-            "This is normal if the F1 season has ended. New sessions will appear when the next season schedule is announced."
-        )
-    elif added_count == 0 and updated_count == 0:
+    if added_count == 0 and updated_count == 0:
         logger.warning(
             "⚠ No events were added or updated. Check the logs above for details."
         )
