@@ -51,29 +51,3 @@ The workflow runs automatically on the 1st of each month, or trigger manually:
 - ✅ **Sprint Qualifying** - Sprint qualifying sessions (when available)
 
 Practice sessions (FP1, FP2, FP3) are not included, but can be added if needed.
-
-## Local Setup (Optional)
-
-If you want to run locally instead of GitHub Actions:
-
-```bash
-pip install -r requirements.txt
-```
-
-Create `credentials.json` from Google Cloud Console (OAuth client ID for desktop app), then:
-
-```bash
-python f1_calendar_sync.py
-```
-
-## Troubleshooting
-
-**No races found**: Check your internet connection and that [f1api.dev](https://f1api.dev/api/current) is accessible.
-
-**Events not showing**: Make sure `USER_EMAIL` secret is set correctly. The calendar is automatically shared with that email.
-
-**Workflow fails**: Check GitHub Actions logs for detailed error messages.
-
-## Data Source
-
-This project uses the free [f1api.dev](https://f1api.dev) API which provides current Formula 1 schedule data. No API key required!
