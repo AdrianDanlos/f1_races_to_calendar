@@ -31,8 +31,8 @@ logger = logging.getLogger(__name__)
 # Google Calendar API scopes
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
-# F1 API endpoint
-F1_API_BASE = "https://f1api.dev/api/current"
+# F1 API endpoint (uses current year)
+F1_API_BASE = f"https://f1api.dev/api/{datetime.now().year}"
 
 # Calendar configuration
 CALENDAR_TIMEZONE = "UTC"
@@ -465,4 +465,3 @@ def sync_f1_schedule():
 
 if __name__ == "__main__":
     sync_f1_schedule()
-

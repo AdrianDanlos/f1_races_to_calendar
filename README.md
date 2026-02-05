@@ -4,7 +4,7 @@ Automatically syncs Formula 1 races, qualifying, and sprint sessions to your Goo
 
 ## Features
 
-- ✅ Fetches F1 schedule from [f1api.dev](https://f1api.dev/api/current)
+- ✅ Fetches F1 schedule from [f1api.dev](https://f1api.dev) (current year)
 - ✅ Adds races, qualifying, and sprint sessions to Google Calendar automatically
 - ✅ Updates existing events when schedules change
 - ✅ Runs monthly to catch schedule updates
@@ -39,6 +39,7 @@ Go to your repo: Settings > Secrets and variables > Actions > New repository sec
 ### 3. Run It
 
 The workflow runs automatically on the 1st of each month, or trigger manually:
+
 - Go to Actions tab > "Sync F1 Calendar" > Run workflow
 
 **Note**: The calendar is created automatically and shared with your email. No manual calendar creation needed!
